@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- This file contains job definitions in schema version 2.0 format -->
+
+<job-scheduling-data xmlns="http://quartznet.sourceforge.net/JobSchedulingData" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0">
+  <processing-directives>
+    <overwrite-existing-data>true</overwrite-existing-data>
+  </processing-directives>
+  <schedule>
+    <job>
+      <name>QuestionJob</name>
+      <group>JobGroup</group>
+      <description>公开咨询发布业务处理(消息队列)</description>
+      <job-type>AutofacLifeTimeScopeDemo.Main.Job.QuestionJob,AutofacLifeTimeScopeDemo.Main</job-type>
+      <durable>true</durable>
+      <recover>false</recover>
+    </job>
+    <trigger>
+      <cron>
+        <name>QuestionJobTrigger</name>
+        <group>JobGroup</group>
+        <job-name>QuestionJob</job-name>
+        <job-group>JobGroup</job-group>
+        <cron-expression>*/10 * * * * ?</cron-expression>
+      </cron>
+    </trigger>
+  </schedule>
+</job-scheduling-data>
